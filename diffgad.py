@@ -13,9 +13,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.transforms import BaseTransform
 # from torch.optim.lr_scheduler import ReduceLROnPlateau
-from denoise_model import extract
 from diffusion_models import MLPDiffusion, Model, sample_dm, sample_dm_free
-from denoise_model import DenoiseNN, p_losses, sample, q_sample, extract
 from datetime import datetime
 
 from pygod.metric.metric import *
@@ -24,6 +22,10 @@ from torch_geometric.utils import to_dense_adj
 from pygod.nn.decoder import DotProductDecoder
 from pygod.nn.functional import double_recon_loss
 
+def extract(a, t, x_shape):
+    batch_size = t.shape[0]
+    out = a.gather(-1, t.cpu())  # 
+    return out.reshape(batch_size, *((1,) * (len(x_shape) - 1))).to(t.device)
 
 def linear_beta_schedule(timesteps):
     beta_start = 0.0001
