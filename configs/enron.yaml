@@ -1,0 +1,12 @@
+# ------ dataset ------
+dataset: 'enron'
+
+# ------ ae parameters ------
+ae_dropout: 0.1
+ae_lr: 0.01
+ae_alpha: 0.0
+hid_dim: 
+
+# ------ diffusion parameters ------
+proto_alpha: 1.0
+weight: 2.0

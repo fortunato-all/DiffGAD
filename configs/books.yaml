@@ -1,0 +1,12 @@
+# ------ dataset ------
+dataset: 'books'
+
+# ------ ae parameters ------
+ae_dropout: 0.1
+ae_lr: 0.01
+ae_alpha: 0.5
+hid_dim: 
+
+# ------ diffusion parameters ------
+proto_alpha: 0.1
+weight: 2.0
